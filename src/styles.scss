@@ -1,0 +1,166 @@
+//Bootstrap variable overrides
+@import "variables";
+
+//Bootstrap Styles
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  background-color: $white;
+}
+
+.h1-style {
+  font-size: 2rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-decoration: underline;
+}
+
+.h1-container {
+  display: flex;
+  justify-content: center;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: end;
+}
+
+.wallBackground {
+  background-color: $blue;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid $black;
+}
+
+nav a:hover {
+  color: $green;
+  text-decoration: underline;
+}
+
+nav ul {
+  padding: 15px;
+}
+
+.navbarStyle {
+  background-color: $blue;
+  color: $white;
+}
+
+.messageDisplay {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.formInput {
+  width: 400px;
+  height: 250px;
+}
+
+.form-error {
+  display: flex;
+  justify-content: center;
+}
+
+.formInputContainer {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonStyle {
+  margin: 10px;
+  background-color: $blue;
+  color: $white;
+  width: 110px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.buttonStyle:hover {
+  color: $green;
+  text-decoration: underline;
+}
+
+.btn-outline-success {
+  background-color: $blue;
+  color: $white;
+  font-size: 1rem;
+}
+
+.me-2 {
+  font-size: 1rem;
+}
+
+.link-muted {
+  color: #aaa;
+}
+.link-muted:hover {
+  color: #1266f1;
+}
+
+.my-2 {
+  display: flex;
+  justify-content: center;
+}
+
+.bg-primary {
+  background-color: $yellow;
+  color: $white;
+}
+
+.formGroup {
+  padding: 30px;
+  width: 500px;
+}
+
+.commentStyle {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.postForm {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.postFormButton {
+  background-color: $blue;
+  color: $white;
+  width: 150px;
+  padding: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1rem;
+}
+
+.postFormButton:hover {
+  color: $green;
+  text-decoration: underline;
+}

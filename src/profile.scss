@@ -1,0 +1,67 @@
+//Bootstrap variable overrides
+@import "variables";
+
+//Bootstrap Styles
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import "styles.scss";
+
+.img-style {
+  width: 500px;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.h4-style {
+  display: flex;
+  justify-content: center;
+}
+
+.list-group {
+  padding: 20px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.contactsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.detailsContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.bioContainer {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.btn-primary {
+  color: $white;
+}
+
+.btn-primary:hover {
+  color: $green;
+  text-decoration: underline;
+}
+
+.page-link {
+  background-color: $blue;
+  color: $white;
+}
+
+.page-link:hover {
+  background-color: $blue;
+  color: $green;
+  text-decoration: underline;
+}
+
+.form-group {
+  padding: 30px;
+}
