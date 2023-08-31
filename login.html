@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="dist/css/login.css" />
+    <title>Login Page</title>
+    <script></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html" class="navbarStyle">Home</a></li>
+        <li><a href="profile.html" class="navbarStyle">Profile</a></li>
+        <li><a href="login.html" class="navbarStyle">Login</a></li>
+      </ul>
+      <div class="logo-premier"></div>
+    </nav>
+    <main>
+      <div class="h1-container">
+        <h1 class="h1-style">LOGIN PAGE</h1>
+      </div>
+      <form action="/profile.html" class="formStyle">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            required="required"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            required="required"
+            minlength="7"
+          />
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Check me out</label
+          >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </main>
+    <footer></footer>
+    <script
+      defer
+      src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    ></script>
+  </body>
+</html>
