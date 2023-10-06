@@ -1,0 +1,37 @@
+//Bootstrap variable overrides
+@import "variables";
+
+//Bootstrap Styles
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import "styles.scss";
+
+.formStyle {
+  margin: 20px;
+}
+
+.btn-primary {
+  color: $white;
+}
+
+.btn-primary:hover {
+  color: $green;
+  text-decoration: underline;
+}
+
+.vh-100 {
+  padding: 50px;
+}
+
+.card-body {
+  padding: 50px;
+}
+
+.text-black {
+  margin: 50px;
+}
+
+.form-error {
+  display: none;
+  color: $red;
+}

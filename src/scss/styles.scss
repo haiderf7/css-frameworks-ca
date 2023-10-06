@@ -136,6 +136,10 @@ nav ul {
   width: 500px;
 }
 
+.form-group {
+  width: 500px;
+}
+
 .commentStyle {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -163,4 +167,54 @@ nav ul {
 .postFormButton:hover {
   color: $green;
   text-decoration: underline;
+}
+
+.form-error {
+  color: $red;
+}
+
+.cardStyle {
+ display: flex;
+ justify-content: center;
+ background-color: $blue;
+ color: #fff;
+ padding: 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.btn-success {
+  width: 300px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+}
+
+.labelStyle {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+}
+
+.form-error {
+  display: none;
+  color: $red;
+}
+
+.btn-primary {
+  margin: 5px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.checkboxContainer {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }
