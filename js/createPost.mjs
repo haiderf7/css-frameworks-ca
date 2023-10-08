@@ -37,7 +37,7 @@ export async function createPost(title, body, tags) {
       body: JSON.stringify({
         title: title,
         body: body,
-        tags: tags,
+        tags: tags.split(","),
       }),
     });
     const data = await response.json();
