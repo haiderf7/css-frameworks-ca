@@ -41,10 +41,12 @@ export async function createPost(title, body, tags) {
       }),
     });
     const data = await response.json();
+    console.log(data);
   } catch (error) {
     console.error(error);
   }
 }
+
 
 function validatePost(e) {
   e.preventDefault();
