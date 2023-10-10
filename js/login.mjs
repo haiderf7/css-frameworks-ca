@@ -28,8 +28,8 @@ async function loginUser() {
     console.log(response);
     const json = await response.json();
     console.log(json);
-    const accessToken = json.accessToken;
-    localStorage.setItem("accessToken", accessToken);
+    const token = json.accessToken;
+    localStorage.setItem("accessToken", token);
     if (response.status === 200) location.href = "index.html";
     if (json.error) {
       validateForm();

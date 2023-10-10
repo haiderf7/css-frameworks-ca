@@ -25,14 +25,14 @@ const method = "post";
 
 export async function createPost(title, body, tags) {
   const createPostsUrl = API_BASE_URL + "/social/posts";
-  const accessToken = localStorage.getItem("accessToken");
+  const token = localStorage.getItem("token");
 
   try {
     const response = await authFetch(createPostsUrl, {
       method: method,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         title: title,
