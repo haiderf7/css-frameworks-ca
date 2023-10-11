@@ -3,7 +3,7 @@
 async function doFetch(url, method = `GET`) {
     try {
       console.log(url);
-      const token = localStorage.getItem("token");
+      const token = JSON.parse(localStorage.getItem)("token");
       console.log(token);
       const fetchOptions = {
         method: method,
