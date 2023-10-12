@@ -3,7 +3,7 @@
 import { load } from "./storage/index.mjs";
 
 export function headers() {
-  const token = JSON.parse(localStorage.getItem("token"));
+  const token = (localStorage.getItem("token"));
 
   return {
     "Content-type": "application/json",
