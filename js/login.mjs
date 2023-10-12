@@ -2,7 +2,7 @@
 
 import { validateEmail, passwordValidation } from "./validation.mjs";
 
-const API_BASE_URL = "https://nf-api.onrender.com";
+const API_BASE_URL = "https://api.noroff.dev/api/v1";
 
 const form = document.querySelector("#form");
 

@@ -1,6 +1,6 @@
 // CONSTANTS
 
-export const API_BASE_URL = `https://nf-api.onrender.com/api/v1`;
+export const API_BASE_URL = `https://api.noroff.dev/api/v1`;
 
 export const updateUrl = API_BASE_URL + "social/posts/";
 

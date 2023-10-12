@@ -7,7 +7,7 @@ export default async function deletePost() {
   const method = "DELETE";
 
   if (id) {
-    const url = "https://nf-api.onrender.com/api/v1/social/posts/" + id;
+    const url = "https://api.noroff.dev/api/v1/social/posts/" + id;
 
     try {
       const response = await authFetch(url, {

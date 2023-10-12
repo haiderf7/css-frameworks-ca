@@ -45,7 +45,7 @@ form.onsubmit = function (event) {
 };
 
 async function updatePost(title, body, tags, id) {
-  const url = "https://nf-api.onrender.com/api/v1/social/posts/" + id;
+  const url = "https://api.noroff.dev/api/v1/social/posts/" + id;
   const method = "PUT";
 
   const data = {

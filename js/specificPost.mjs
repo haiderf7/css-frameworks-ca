@@ -5,7 +5,7 @@ const params = new URLSearchParams(document.location.search);
 const id = params.get("id");
 if (!id) location.href = "index.html";
 
-const url = "https://nf-api.onrender.com/api/v1/social/posts/" + id;
+const url = "https://api.noroff.dev/api/v1/social/posts/" + id;
 const container = document.querySelector(".post-specific-container");
 const h1 = document.querySelector("h1");
 

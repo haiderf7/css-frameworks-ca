@@ -5,7 +5,7 @@ import { searchPosts } from "./ui/searchPosts.mjs";
 import { authFetch } from "./api/authFetch.mjs";
 import { filterPosts } from "./ui/searchPosts.mjs";
 
-const API_BASE_URL = "https://nf-api.onrender.com";
+const API_BASE_URL = "https://api.noroff.dev/api/v1";
 
 async function getPostContent() {
   const url = `${API_BASE_URL}/api/v1/social/posts`;
