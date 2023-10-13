@@ -3,7 +3,7 @@
 import { API_BASE_URL } from "./api/constants.mjs";
 import { authFetch } from "./api/authFetch.mjs";
 import { validateTitle, validateBody, validateTags } from "./validation.mjs";
-import { renderPosts } from "./ui/renderPosts.mjs"; // Import the renderPosts function
+import { renderPosts } from "./ui/renderPosts.mjs";
 
 const form = document.querySelector("#form");
 const title = document.querySelector("#titleId");
@@ -12,17 +12,14 @@ const tags = document.querySelector("#tagsId");
 const titleError = document.querySelector("#titleError");
 const bodyError = document.querySelector("#bodyError");
 const tagsError = document.querySelector("#tagsError");
-const action = "/posts";
+const searchInput = document.querySelector(".search");
+const sortCheckbox = document.querySelector("#testfilter");
+
 const method = "post";
 
-let createdPosts = []; // Array to store created posts
-
-export async function createPost(title, body, tags) {
+export async function createPost(title, body, tags, createdPosts) {
   const createPostsUrl = API_BASE_URL + "/social/posts";
   const token = localStorage.getItem("token");
-
-  console.log("createPostsUrl:", createPostsUrl);
-  console.log("Token:", token);
 
   try {
     const response = await authFetch(createPostsUrl, {
@@ -38,12 +35,9 @@ export async function createPost(title, body, tags) {
       }),
     });
 
-    console.log("Response status:", response.status);
-
     if (response.status === 200) {
       const data = await response.json();
-      console.log("Post created successfully:", data);
-      createdPosts.push(data); // Add the new post to the array
+      createdPosts.push(data);
       return data;
     } else {
       console.error("Failed to create post:", response.statusText);
@@ -62,10 +56,10 @@ function validatePost(e) {
     bodyError.style.display = "none";
     tagsError.style.display = "none";
 
-    createPost(title.value, body.value, tags.value)
+    createPost(title.value, body.value, tags.value, createdPosts)
       .then((newPost) => {
         if (newPost) {
-          renderPosts(createdPosts); // Render all created posts
+          renderPosts(createdPosts);
         }
       });
   } else {
@@ -76,3 +70,21 @@ function validatePost(e) {
 }
 
 form.addEventListener("submit", validatePost);
+
+const createdPosts = [];
+
+
+searchInput.addEventListener("input", handleSearchAndSort);
+sortCheckbox.addEventListener("change", handleSearchAndSort);
+
+// Function to handle search and sort
+function handleSearchAndSort() {
+  const searchValue = searchInput.value.trim().toLowerCase();
+  let filteredPosts = createdPosts.filter((post) => post.title.toLowerCase().includes(searchValue));
+
+  if (sortCheckbox.checked) {
+    filteredPosts.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  renderPosts(filteredPosts);
+}

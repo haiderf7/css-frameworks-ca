@@ -1,33 +1,19 @@
-// SEARCH POSTS
+// SEARCH AND SORT POSTS
 
 import { renderPosts } from "./renderPosts.mjs";
 
-export function searchPosts(posts) {
-  const search = document.querySelector(".search");
+export function searchAndSortPosts(posts, searchInput, sortCheckbox) {
+  searchInput.addEventListener("input", handleSearchAndSort);
+  sortCheckbox.addEventListener("change", handleSearchAndSort);
 
-  search.onkeyup = function (event) {
-    const searchValue = event.target.value.trim().toLowerCase();
+  function handleSearchAndSort() {
+    const searchValue = searchInput.value.trim().toLowerCase();
+    let filteredPosts = posts.filter((post) => post.title.toLowerCase().includes(searchValue));
 
-    const filteredPosts = posts.filter((post) => {
-      if (post.title.toLowerCase().includes(searchValue)) {
-        return true;
-      }
-    });
+    if (sortCheckbox.checked) {
+      filteredPosts.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
     renderPosts(filteredPosts);
-  };
-}
-
-export function filterPosts(posts) {
-  search.onkeyup = function (event) {
-    posts.sort(function (a, b) {
-      if (a.firstname < b.firstname) {
-        return -1;
-      }
-      if (a.firstname > b.firstname) {
-        return 1;
-      }
-      return 0;
-    });
-    filterPosts(search);
-  };
+  }
 }

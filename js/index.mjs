@@ -1,9 +1,10 @@
 // JS -> INDEX
 
 import { renderPosts } from "./ui/renderPosts.mjs";
-import { searchPosts } from "./ui/searchPosts.mjs";
+import { searchPosts,} from "./ui/searchPosts.mjs";
 import { authFetch } from "./api/authFetch.mjs";
 import { filterPosts } from "./ui/searchPosts.mjs";
+
 const API_BASE_URL = "https://api.noroff.dev/api/v1";
 
 async function getPostContent() {

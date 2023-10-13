@@ -1,4 +1,3 @@
-// UPDATE POST
 import { authFetch } from "./api/authFetch.mjs";
 
 const form = document.querySelector("#form");
@@ -11,17 +10,15 @@ const params = new URLSearchParams(document.location.search);
 const id = params.get("id");
 if (!id) location.href = "index.html";
 
-const url = "https://nf-api.onrender.com/api/v1/social/posts/" + id;
+const url = `https://api.noroff.dev/api/v1/social/posts/${id}`;
 
-//Setter inn data og id i form'et
-(async function () {
+// Populate the form with post data
+async function populateForm() {
   const method = "GET";
   try {
-    const response = await authFetch(url, method);
+    const response = await authFetch(url, method); // Use authFetch to ensure authentication
     const json = await response.json();
 
-    //før '=' er inputene du henter med querySelector i toppen her.
-    //Etter '=' setter de verdiene til å være det du får fra fetch'en.
     title.value = json.title;
     body.value = json.body;
     tags.value = json.tags;
@@ -29,39 +26,52 @@ const url = "https://nf-api.onrender.com/api/v1/social/posts/" + id;
   } catch (error) {
     console.log(error);
   }
-})();
+}
 
-form.onsubmit = function (event) {
+// Handle form submission
+form.onsubmit = async function (event) {
   event.preventDefault();
 
   const titleValue = title.value;
   const bodyValue = body.value;
   const tagsValue = tags.value;
-  const idValue = idInput.value;
 
-  //Her kan du gjøre if sjekk for å validere inputene
+  // Here, you can add input validation checks
 
-  updatePost(titleValue, bodyValue, tagsValue, idValue);
+  try {
+    await updatePost(titleValue, bodyValue, tagsValue, id);
+    alert("Post updated successfully!"); // Display a success message
+  } catch (error) {
+    console.log("Failed to update post:", error);
+  }
 };
 
+// Function to update the post
 async function updatePost(title, body, tags, id) {
-  const url = "https://api.noroff.dev/api/v1/social/posts/" + id;
+  const url = `https://api.noroff.dev/api/v1/social/posts/${id}`;
   const method = "PUT";
 
   const data = {
     title: title,
     body: body,
-    tags: tags,
+    tags: tags.split(","), // Make sure tags is an array
   };
 
-  try {
-    const response = await authFetch(url, {
-      method,
-      body: JSON.stringify(data),
-    });
+  const token = localStorage.getItem("token");
 
-    const json = await response.json();
-  } catch (error) {
-    console.log(error);
+  const response = await authFetch(url, {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (response.status !== 200) {
+    throw new Error(`Failed to update post: ${response.statusText}`);
   }
 }
+
+// Populate the form with post data when the page loads
+populateForm();
