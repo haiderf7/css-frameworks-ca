@@ -1,33 +1,30 @@
-// SEARCH POSTS
-
 import { renderPosts } from "./renderPosts.mjs";
 
-export function searchPosts(posts) {
+export function searchAndSortPosts(posts) {
   const search = document.querySelector(".search");
+  const sortCheckbox = document.querySelector("#testfilter");
 
-  search.onkeyup = function (event) {
-    const searchValue = event.target.value.trim().toLowerCase();
+  search.addEventListener("input", function () {
+    const searchValue = search.value.trim().toLowerCase();
 
     const filteredPosts = posts.filter((post) => {
-      if (post.title.toLowerCase().includes(searchValue)) {
-        return true;
-      }
+      return post.title.toLowerCase().includes(searchValue);
     });
-    renderPosts(filteredPosts);
-  };
-}
 
-export function filterPosts(posts) {
-  search.onkeyup = function (event) {
-    posts.sort(function (a, b) {
-      if (a.firstname < b.firstname) {
-        return -1;
-      }
-      if (a.firstname > b.firstname) {
-        return 1;
-      }
-      return 0;
-    });
-    filterPosts(search);
-  };
+    if (sortCheckbox.checked) {
+      filteredPosts.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    renderPosts(filteredPosts);
+  });
+
+  sortCheckbox.addEventListener("change", function () {
+    let filteredPosts = posts.slice();
+
+    if (sortCheckbox.checked) {
+      filteredPosts.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    search.dispatchEvent(new Event('input')); // Re-run the search when sorting changes
+  });
 }
