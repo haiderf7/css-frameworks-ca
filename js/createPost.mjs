@@ -80,10 +80,10 @@ sortCheckbox.addEventListener("change", handleSearchAndSort);
 // Function to handle search and sort
 function handleSearchAndSort() {
   const searchValue = searchInput.value.trim().toLowerCase();
-  let filteredPosts = createdPosts.filter((post) => post.title.toLowerCase().includes(searchValue));
+  let filteredPosts = createdPosts?.filter((post) => post.title.toLowerCase().includes(searchValue)) ?? [];
 
   if (sortCheckbox.checked) {
-    filteredPosts.sort((a, b) => a.title.localeCompare(b.title));
+    filteredPosts.sort((a, b) => a.title.localeCompare(b.title, "en", {sensitivity: 'base'}));
   }
 
   renderPosts(filteredPosts);
