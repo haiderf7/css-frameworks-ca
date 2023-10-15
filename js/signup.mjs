@@ -7,7 +7,7 @@ import {
   newPasswordValidation,
 } from "./validation.mjs";
 
-const API_BASE_URL = "https://nf-api.onrender.com";
+const API_BASE_URL = "https://api.noroff.dev";
 
 const form = document.querySelector("#register");
 

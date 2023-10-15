@@ -16,7 +16,7 @@ const url = `https://api.noroff.dev/api/v1/social/posts/${id}`;
 async function populateForm() {
   const method = "GET";
   try {
-    const response = await authFetch(url, method); // Use authFetch to ensure authentication
+    const response = await authFetch(url, method); 
     const json = await response.json();
 
     title.value = json.title;
@@ -40,7 +40,7 @@ form.onsubmit = async function (event) {
 
   try {
     await updatePost(titleValue, bodyValue, tagsValue, id);
-    alert("Post updated successfully!"); // Display a success message
+    alert("Post updated successfully!"); 
   } catch (error) {
     console.log("Failed to update post:", error);
   }
@@ -54,7 +54,7 @@ async function updatePost(title, body, tags, id) {
   const data = {
     title: title,
     body: body,
-    tags: tags.split(","), // Make sure tags is an array
+    tags: tags.split(","), 
   };
 
   const token = localStorage.getItem("token");
@@ -73,5 +73,7 @@ async function updatePost(title, body, tags, id) {
   }
 }
 
-// Populate the form with post data when the page loads
+
 populateForm();
+
+
