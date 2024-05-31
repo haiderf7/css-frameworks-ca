@@ -1,30 +1,21 @@
 //REGISTER USER
 
-import {
-  validateUsername,
-  validateEmail,
-  passwordValidation,
-  newPasswordValidation,
-} from "./validation.mjs";
+import { validateUsername, validateEmail, passwordValidation, newPasswordValidation } from "./validation.mjs";
 
 const API_BASE_URL = "https://api.noroff.dev";
 
 const form = document.querySelector("#register");
 
 const username = document.querySelector("#username");
-
 const userNameError = document.querySelector("#userNameError");
 
 const emailAddress = document.querySelector("#emailAddress");
-
 const emailError = document.querySelector("#emailError");
 
 const password = document.querySelector("#password");
-
 const passwordError = document.querySelector("#passwordError");
 
 const newPassword = document.querySelector("#newPassword");
-
 const newPasswordError = document.querySelector("#newPasswordError");
 
 async function registerTheUser(username, email, password) {
@@ -44,14 +35,20 @@ async function registerTheUser(username, email, password) {
 
   try {
     const response = await fetch(url, options);
-    console.log(response);
     const json = await response.json();
-    console.log(json);
-    if (json.error) {
-      validateForm();
+
+    if (response.status === 201) {
+    
+      alert("User registration was successful!");
+    } else {
+      
+      const errorMessage = json.message || "An unknown error occurred";
+      console.log("Error message from the server:", errorMessage);
+      alert("User registration failed: " + errorMessage);
     }
   } catch (error) {
     console.log(error);
+    alert("An error occurred during registration.");
   }
 }
 
