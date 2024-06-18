@@ -1,5 +1,3 @@
-// JS -> INDEX
-
 import { renderPosts } from "./ui/renderPosts.mjs";
 import { searchAndSortPosts } from "./ui/searchPosts.mjs";
 import { authFetch } from "./api/authFetch.mjs";
@@ -22,6 +20,15 @@ async function getPostContent() {
 }
 
 getPostContent();
+
+// Display logged in message
+const userName = localStorage.getItem("userName");
+if (userName) {
+  const userMessage = document.createElement("p");
+  userMessage.textContent = "You are logged in";
+  userMessage.style.color = "green";
+  document.body.prepend(userMessage); // Adjust as necessary to place the message in the desired location
+}
 
 // Event listener for the "Logout" button
 const logoutButton = document.querySelector("#logoutButton");

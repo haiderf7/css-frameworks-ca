@@ -37,3 +37,13 @@ const h1 = document.querySelector("h1");
     console.error(error);
   }
 })();
+
+// Display logged in message
+const userName = localStorage.getItem("userName");
+if (userName) {
+  const userMessage = document.createElement("p");
+  userMessage.textContent = "You are logged in";
+  userMessage.style.color = "green";
+  userMessage.style.fontWeight = "bold";
+  document.body.prepend(userMessage); // Adjust as necessary to place the message in the desired location
+}

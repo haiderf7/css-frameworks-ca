@@ -16,7 +16,7 @@ const url = `https://api.noroff.dev/api/v1/social/posts/${id}`;
 async function populateForm() {
   const method = "GET";
   try {
-    const response = await authFetch(url, method); 
+    const response = await authFetch(url, method);
     const json = await response.json();
 
     title.value = json.title;
@@ -40,7 +40,7 @@ form.onsubmit = async function (event) {
 
   try {
     await updatePost(titleValue, bodyValue, tagsValue, id);
-    alert("Post updated successfully!"); 
+    alert("Post updated successfully!");
   } catch (error) {
     console.log("Failed to update post:", error);
   }
@@ -54,7 +54,7 @@ async function updatePost(title, body, tags, id) {
   const data = {
     title: title,
     body: body,
-    tags: tags.split(","), 
+    tags: tags.split(","),
   };
 
   const token = localStorage.getItem("token");
@@ -73,7 +73,16 @@ async function updatePost(title, body, tags, id) {
   }
 }
 
+// Display logged in message
+const userName = localStorage.getItem("userName");
+if (userName) {
+  const userMessage = document.createElement("p");
+  userMessage.textContent = "You are logged in";
+  userMessage.style.color = "green";
+  userMessage.style.fontWeight = "bold";
+  document.body.prepend(userMessage); // Adjust as necessary to place the message in the desired location
+}
 
+// Call populateForm to fill in the form with the post data
 populateForm();
-
 

@@ -26,8 +26,14 @@ async function loginUser(event) {
 
 		if (response.ok) {
 			const token = json.accessToken;
+			const userName = profile.name; // Assuming 'name' is a part of the login form data
+
 			localStorage.setItem("token", token);
-			return (location.href = "index.html");
+			localStorage.setItem("userName", userName);
+
+			alert("Login is successful");
+			location.href = "index.html";
+			return;
 		}
 
 		displayMessage("danger", json.errors[0].message, "#message");
