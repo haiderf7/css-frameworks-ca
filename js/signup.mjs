@@ -38,10 +38,10 @@ async function registerTheUser(username, email, password) {
     const json = await response.json();
 
     if (response.status === 201) {
-    
+
       alert("User registration was successful!");
     } else {
-      
+
       const errorMessage = json.message || "An unknown error occurred";
       console.log("Error message from the server:", errorMessage);
       alert("User registration failed: " + errorMessage);

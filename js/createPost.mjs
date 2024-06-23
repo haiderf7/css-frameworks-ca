@@ -38,6 +38,7 @@ export async function createPost(title, body, tags, createdPosts) {
     if (response.status === 200) {
       const data = await response.json();
       createdPosts.push(data);
+      alert("Post created successfully"); // Alert on successful post creation
       return data;
     } else {
       console.error("Failed to create post:", response.statusText);
@@ -51,28 +52,43 @@ export async function createPost(title, body, tags, createdPosts) {
 
 function validatePost(e) {
   e.preventDefault();
-  if (validateTitle(title.value) && validateBody(body.value) && validateTags(tags.value)) {
-    titleError.style.display = "none";
-    bodyError.style.display = "none";
-    tagsError.style.display = "none";
 
+  let isValid = true;
+
+  if (validateTitle(title.value)) {
+    titleError.style.display = "none";
+  } else {
+    titleError.style.display = "block";
+    isValid = false;
+  }
+
+  if (validateBody(body.value)) {
+    bodyError.style.display = "none";
+  } else {
+    bodyError.style.display = "block";
+    isValid = false;
+  }
+
+  if (validateTags(tags.value)) {
+    tagsError.style.display = "none";
+  } else {
+    tagsError.style.display = "block";
+    isValid = false;
+  }
+
+  if (isValid) {
     createPost(title.value, body.value, tags.value, createdPosts)
       .then((newPost) => {
         if (newPost) {
           renderPosts(createdPosts);
         }
       });
-  } else {
-    titleError.style.display = "block";
-    bodyError.style.display = "block";
-    tagsError.style.display = "block";
   }
 }
 
 form.addEventListener("submit", validatePost);
 
 const createdPosts = [];
-
 
 searchInput.addEventListener("input", handleSearchAndSort);
 sortCheckbox.addEventListener("change", handleSearchAndSort);

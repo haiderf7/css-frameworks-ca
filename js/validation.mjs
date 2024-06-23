@@ -21,19 +21,19 @@ export function newPasswordValidation(newPassword) {
 }
 
 export function validateTitle(title) {
-  const pattern = /^[\w]+$/;
+  const pattern = /^[\w\s]+$/;
   const patternMatches = pattern.test(title.trim());
   return patternMatches;
 }
 
 export function validateBody(body) {
-  const pattern = /^[\w]+$/;
+  const pattern = /^[\w\s]+$/;
   const patternMatches = pattern.test(body.trim());
   return patternMatches;
 }
 
 export function validateTags(tags) {
-  const pattern = /^[\w]+$/;
+  const pattern = /^[\w\s]+$/;
   const patternMatches = pattern.test(tags.trim());
   return patternMatches;
 }
